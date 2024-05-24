@@ -1,0 +1,91 @@
+@startuml Socket_Logic
+hide circle
+title
+Socket Logic API Design
+end title
+' left to right direction
+
+skinparam TitleFontSize 22
+skinparam RectangleFontSize 22
+skinparam ClassFontSize 20
+skinparam ClassAttributeFontSize 18
+skinparam NoteFontSize 18
+skinparam LegendFontSize 18
+
+rectangle "Client Emits"{
+    rectangle "Client Lobby Management" {
+        class lobby:join #Violet {
+            username: string
+            lobbyCode: string
+        }
+        class lobby:quit  #Violet {
+        }
+        class lobby:create #Violet {
+            username: string
+        }
+        class lobby:start #Violet {
+        }
+        class lobby:updateList #Violet {
+            id: string;
+            status: boolean;
+        }
+        class lobby:startNewIteration #Violet {
+        }
+        class lobby:fetchLists #Violet {
+            callback: function(lists: ListItem[]) : void
+        }
+    }
+    rectangle "Client Vote Management" {
+        class vote:vote  #Violet {
+            roomCode: string
+            movieId: number
+            vote: boolean
+        }
+    }
+    rectangle "Client Movie Management" {
+        class movie:fetch  #Violet {
+            movieId: number
+            callback: function(movies: Movie[]) : void
+        }
+    }
+}
+
+
+rectangle "Server Emits"{
+    rectangle "Server Lobby Management" {
+        class lobby:error  #LightGreen{
+            message: string
+        }
+        class lobby:joined #LightGreen{
+            admin: boolean
+            users: string[]
+            code: string
+        }
+        class lobby:update  #LightGreen{
+            users: string[]
+        }
+        class lobby:destroyed  #LightGreen{
+
+        }
+    }
+    rectangle "Server Vote Management" {
+        class vote:start  #LightGreen{
+            movie: Movie
+        }
+        class vote:next  #LightGreen{
+            movie: Movie
+        }
+        class vote:error  #LightGreen{
+            message: string
+        }
+        class vote:scoreboard #LightGreen{
+            scoreboard: ScoreboardField[]
+        }
+        class vote:completed #LightGreen{
+        }
+    }
+}
+
+"Server Emits" -[hidden]u-> "Client Emits"
+"Client Movie Management" -[hidden]d-> "Client Vote Management"
+@enduml

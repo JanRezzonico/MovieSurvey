@@ -1,0 +1,111 @@
+[
+    {
+        "name": "Trending",
+        "filters": {
+            "sort_by": "popularity.desc"
+        }
+    },
+    {
+        "name": "Top Rated Movies",
+        "filters": {
+            "sort_by": "vote_average.desc"
+        }
+    },
+    {
+        "name": "Now Playing",
+        "filters": {
+            "sort_by": "release_date.desc"
+        }
+    },
+    {
+        "name": "Best Comedies",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "35"
+        }
+    },
+    {
+        "name": "Top Action Movies",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "28"
+        }
+    },
+    {
+        "name": "Best Dramas",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "18"
+        }
+    },
+    {
+        "name": "Sci-Fi Classics",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "878"
+        }
+    },
+    {
+        "name": "Thrilling Mysteries",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "9648"
+        }
+    },
+    {
+        "name": "Best Animated Movies",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "16"
+        }
+    },
+    {
+        "name": "Romantic Favorites",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "10749"
+        }
+    },
+    {
+        "name": "Classic Horror Films",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "27"
+        }
+    },
+    {
+        "name": "Best Documentaries",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "99"
+        }
+    },
+    {
+        "name": "Family Fun",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "10751"
+        }
+    },
+    {
+        "name": "Music Lovers",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "10402"
+        }
+    },
+    {
+        "name": "Best Fantasy Films",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "14"
+        }
+    },
+    {
+        "name": "Historical Epics",
+        "filters": {
+            "sort_by": "vote_average.desc",
+            "with_genres": "36"
+        }
+    }
+]

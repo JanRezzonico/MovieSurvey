@@ -1,0 +1,44 @@
+@startuml Activity_Diagram
+hide circle
+title
+Activity Diagram
+end title
+' left to right direction
+
+start
+:Open app;
+if(Create room?) then (yes)
+    :Create room;
+    :Join room as admin;
+    :Pick movie lists;
+    :Start session;
+else (no)
+    :Join room;
+    :Wait for session to start;
+endif
+repeat
+while(More movies to vote?) is (yes)
+    :View movie information;
+    if(Select movie?) then (yes)
+        :Vote yes to movie;
+    else (no)
+        :Vote no to movie;
+    endif
+    :Go to next movie;
+endwhile (no)
+:View scoreboard;
+if(Are you admin?) then (yes)
+    if(Do you want to start a new iteration?) then (yes)
+        :Start new iteration;
+    else (no)
+        :End session;
+        stop
+    endif
+else (no)
+    if(New iteration was started?) then (yes)
+    else (no)
+        stop
+    endif
+endif
+
+@enduml

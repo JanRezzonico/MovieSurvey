@@ -1,0 +1,65 @@
+@startuml Socket_Interaction
+hide circle
+title
+Socket Interaction Activity Diagram
+end title
+' left to right direction
+' skinparam ActivityDiamondBackgroundColor LightGreen
+skinparam ActivityFontSize 18
+skinparam ActivityArrowFontSize 16
+skinparam TitleFontSize 20
+start
+:Open app;
+if(Create room?) then (yes)
+    #Violet :Emit lobby:create;
+    #Violet :Emit lobby:updateLists;
+    #Violet :Emit lobby:start;
+else (no)
+    #Violet :Emit lobby:join;
+endif
+while(Lobby not started) is (yes)
+    if(User joins lobby) then (yes)
+        #LightGreen :Recieve lobby:update;
+        :Update username list;
+    else (no)
+    endif
+endwhile (no)
+#LightGreen :Recieve vote:start;
+#LightGreen :Recieve vote:next;
+:Save next movie information;
+repeat
+while(What was recieved?) is (vote:next or vote:start)
+    :See movie information;
+    #Violet :Emit vote:vote;
+    #LightGreen :Recieve either vote:next or vote:done;
+    if(Recieved vote:next with empty body) then (yes)
+        :This is the last movie;
+    else (no)
+        :More movies to come and vote;
+    endif
+endwhile (vote:done)
+while(Everyone voted every movie) is (no)
+    #LightGreen :Recieve vote:completed;
+    :See waiting page;
+endwhile (yes)
+#LightGreen :Recieve vote:scoreboard;
+:See scoreboard;
+if(Are you admin?) then (yes)
+    if(Do you want to start a new iteration?) then (yes)
+        #Violet :Emit lobby:startNewIteration;
+        #LightGreen :Recieve vote:start;
+    else (no)
+        #Violet :Emit lobby:quit;
+        stop
+    endif
+else (no)
+    #LightGreen :Wait to recieve vote:start;
+    if(Recieved vote:start?) then (yes)
+    else (no)
+        stop
+    endif
+endif
+
+@enduml
+
+

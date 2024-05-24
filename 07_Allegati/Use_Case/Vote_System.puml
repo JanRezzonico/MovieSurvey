@@ -1,0 +1,16 @@
+@startuml Vote_System
+title
+Vote System Use Case
+end title
+' left to right direction
+:User:
+rectangle App{
+    :User: -> (Be In Started Session)
+    (Be In Started Session) ..> (View Movie Information) : <<include>>
+    (View Movie Information) <.. (Vote Yes) : <<extend>>
+    (View Movie Information) <.. (Vote No) : <<extend>>
+    (Vote Yes) ..> (Go To Next Movie) : <<include>>
+    (Vote No) ..> (Go To Next Movie) : <<include>>
+    (Go To Next Movie) .> (View Movie Information) : <<include>>
+}
+@enduml

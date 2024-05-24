@@ -1,0 +1,19 @@
+@startuml Lobby_Management
+title
+Lobby Management Use Case
+end title
+' left to right direction
+:User:
+rectangle App{
+    :User: -> (Open Application)
+    (Open Application) ..> (View Home Screen) : <<include>>
+    (View Home Screen) <.. (Create Lobby) : <<extend>>
+    (View Home Screen) <.. (Join Lobby) : <<extend>>
+    (Join Lobby) ..> (Enter Lobby Code) : <<include>>
+    (Join Lobby) <.. (View Lobby) : <<extend>>
+    (View Lobby) ..> (View Lobby Members) : <<include>>
+    (Create Lobby) <.. (View Lobby As Admin) : <<extend>>
+    (View Lobby As Admin) ..> (View Lobby Members) : <<include>>
+    (View Lobby As Admin) <.. (Start Session) : <<extend>>
+}
+@enduml

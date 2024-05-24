@@ -1,0 +1,47 @@
+@startuml Socket_Logic_Classes
+hide circle
+title
+Classes used in the socket logic diagram
+end title
+left to right direction
+
+skinparam TitleFontSize 22
+skinparam RectangleFontSize 22
+skinparam ClassFontSize 20
+skinparam ClassAttributeFontSize 18
+skinparam NoteFontSize 18
+skinparam LegendFontSize 18
+
+class Movie {
+    id: number
+    title: string
+    cover: string
+    year: string
+    genres: string[]
+    description: string
+}
+note right
+    This class represents the movie
+    that is sent to the client
+end note
+class ScoreboardField {
+    score: string
+    external_id: number
+    title: string
+    year: string
+    genres: string[]
+}
+note right
+    This class represents a single field
+    of the scoreboard that is sent to the client
+end note
+class ListItem {
+    name: string
+    id: ObjectId
+    status: boolean
+}
+note right
+    This class represents a single item
+    in the array of movie lists that is sent to the client
+end note
+@enduml
